@@ -16,7 +16,7 @@ RUN apt-get install -y python-matplotlib python-scipy python-numpy
 RUN apt-get install -y python-sklearn python-sklearn-doc python-skimage python-skimage-doc python-scikits-learn python-scikits.statsmodels
 
 # set up remove visual login packages ...
-RUN apt-get install xfwm4 xfce4 x2goserver x2goserver-xsession
+RUN apt-get install -y xfwm4 xfce4 x2goserver x2goserver-xsession
 
 # install python packages
 RUN pip install --upgrade pip
@@ -38,7 +38,8 @@ RUN cd /gr/ && pybombs recipes add gr-recipes git+https://github.com/gnuradio/gr
 RUN cd /gr/ && pybombs recipes add gr-etcetera git+https://github.com/gnuradio/gr-etcetera.git
 RUN cd /gr/ && pybombs install gnuradio gr-burst gr-pyqt gr-pcap gr-mapper gr-analysis 
 
-
 # copy in some helpful files
 COPY .vimrc /root/
+
+
 
