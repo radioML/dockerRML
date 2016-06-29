@@ -59,7 +59,7 @@ screen
 cd /root/src/notebooks/
 ipython notebook
 ```
-not open http://docker_ip:8888 in the host browser
+now open http://docker_ip:8888 in the host browser
 
 
 ## Notes
