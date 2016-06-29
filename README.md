@@ -1,18 +1,16 @@
 
 # RadioML Docker Image
 
-A simple docker image provided by https://radioml.com/ which provides many of the primitives needed for radio machine learning experementation.
+A docker image provided by https://radioml.com/ which provides many of the primitives needed for radio machine learning experimentation.
 
 ## Docker Image Contents
 
- - Ubuntu 16.04
- - x2go server
- - ipython notebook
- - keras
- - theano
- - tensorflow
- - gnuradio
- - useful gnuradio OOT modules
+ - Base:   Ubuntu 16.04 Xenial Xerus
+ - Remote: ssh-server, x2go server + xfce4, ipython notebook
+ - Misc:   screen, tmux, vim, emacs, git, meld
+ - DL:     Theano, TensorFlow, Keras, OpenAI Gym, KeRLym
+ - ML:     Scikit-learn, OpenCV, PyOpenPNL
+ - SDR:    GNU Radio + several useful out-of-tree gr-modules
 
 ## Installation
 
