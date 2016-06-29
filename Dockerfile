@@ -26,9 +26,12 @@ RUN pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/te
 RUN pip install --upgrade git+https://github.com/fchollet/keras.git
 
 # check out sources
-RUN cd /root/ && git clone https://github.com/Theano/Theano.git
-RUN cd /root/ && git clone https://github.com/tensorflow/tensorflow.git
-RUN cd /root/ && git clone https://github.com/fchollet/keras.git
+mkdir /root/src/
+RUN cd /root/src/ && git clone https://github.com/Theano/Theano.git
+RUN cd /root/src/ && git clone https://github.com/tensorflow/tensorflow.git
+RUN cd /root/src/ && git clone https://github.com/fchollet/keras.git
+RUN cd /root/src/ && git clone https://github.com/PyOpenPNL/OpenPNL.git && cd OpenPNL && ./autogen.sh &&  ./configure CFLAGS='-g -O2 -fpermissive -w' CXXFLAGS='-g -O2 -fpermissive -w' && make && make install
+RUN cd /root/src/ && git clone https://github.com/PyOpenPNL/PyOpenPNL.git && cd PyOpenPNL && python setup.py build && python setup.py install
 
 # set up gnuradio and related tools
 RUN apt-get install -y autotools-dev autoconf sudo wireshark
