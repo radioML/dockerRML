@@ -1,8 +1,10 @@
 FROM ubuntu:16.04
 MAINTAINER Tim O'Shea <tim.oshea753@gmail.com>
 
+# set up environment
+ENV DEBIAN_FRONTEND noninteractive
+
 # update repos/ppas...
-RUN export DEBIAN_FRONTEND=noninteractive
 RUN apt-get update 
 RUN apt-add-repository -y ppa:x2go/stable
 RUN apt-get install -y python-software-properties software-properties-common
