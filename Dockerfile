@@ -15,6 +15,11 @@ RUN apt-get install -y python-pip git openssh-server vim emacs screen tmux
 RUN apt-get install -y python-matplotlib python-scipy python-numpy
 RUN apt-get install -y python-sklearn python-sklearn-doc python-skimage python-skimage-doc python-scikits-learn python-scikits.statsmodels
 
+# Set up remove login info
+RUN mkdir /var/run/sshd
+RUN echo 'root:radioml' | chpasswd
+RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
 # somewhat more graphical packages..
 RUN apt-get install -y python-opencv gimp 
 RUN apt-get install -y firefox evince audacity meld
