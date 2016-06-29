@@ -3,8 +3,8 @@ MAINTAINER Tim O'Shea <tim.oshea753@gmail.com>
 
 # update repos/ppas...
 RUN apt-get update 
-RUN apt-add-repository -y ppa:x2go/stable
 RUN apt-get install -y python-software-properties software-properties-common
+RUN apt-add-repository -y ppa:x2go/stable
 RUN apt-get update 
 
 # install core packages
