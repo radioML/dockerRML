@@ -11,7 +11,7 @@ RUN apt-add-repository -y ppa:x2go/stable
 RUN apt-get update 
 
 # install core packages
-RUN apt-get install -y python-pip git openssh-server vim emacs screen tmux
+RUN apt-get install -y python-pip git openssh-server vim emacs screen tmux locate
 RUN apt-get install -y python-matplotlib python-scipy python-numpy
 RUN apt-get install -y python-sklearn python-sklearn-doc python-skimage python-skimage-doc python-scikits-learn python-scikits.statsmodels
 
