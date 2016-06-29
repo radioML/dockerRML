@@ -5,12 +5,12 @@ A docker image provided by https://radioml.com/ which provides many of the primi
 
 ## Docker Image Contents
 
- - *Base:*   Ubuntu 16.04 Xenial Xerus
- - *Remote:* ssh-server, x2go server + xfce4, ipython notebook
- - *Misc:*   screen, tmux, vim, emacs, git, meld
- - *DL:*     Theano, TensorFlow, Keras, OpenAI Gym, KeRLym
- - *ML:*     Scikit-learn, OpenCV, PyOpenPNL
- - *SDR:*    GNU Radio + several useful out-of-tree gr-modules
+ - **Base:**   Ubuntu 16.04 Xenial Xerus
+ - **Remote:** ssh-server, x2go server + xfce4, ipython notebook
+ - **Misc:**   screen, tmux, vim, emacs, git, meld
+ - **DL:**     Theano, TensorFlow, Keras, OpenAI Gym, KeRLym
+ - **ML:**     Scikit-learn, OpenCV, PyOpenPNL
+ - **SDR:**    GNU Radio + several useful out-of-tree gr-modules
 
 ## Building the Container
 
@@ -25,7 +25,7 @@ This will take a while to build, so find something to do for an hour
 
 To launch in foreground terminal
 ```
-docker run -i -t osh/testrml2 /bin/bash
+docker run -i -t radioml/radioml /bin/bash
 ```
 
 To launch in background with ssh up (needed before x2go)
@@ -64,6 +64,6 @@ not open http://docker_ip:8888 in the host browser
 
 ## Notes
 
- - *GPU Support:* For the moment theano and tensorflow are installed without GPU support in this docker
- - *Image Size:* Current image size is ~10GB after build
+ - **GPU Support:** For the moment theano and tensorflow are installed without GPU support in this docker
+ - **Image Size:** Current image size is ~10GB after build
 
