@@ -1,4 +1,4 @@
-FROM nvidia:7.5-cudnn4-devel
+FROM nvidia/cuda:7.5-cudnn4-devel
 MAINTAINER Tim O'Shea <tim.oshea753@gmail.com>
 
 # set up environment
