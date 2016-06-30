@@ -83,6 +83,12 @@ cd /root/src/kerlym/examples
 KERAS_BACKEND='tensorflow' ./run_breakout.sh
 ```
 
+Running PyOpenPNL Examples
+```
+cd /root/src/PyOpenPNL/examples
+./simple_bnet.py
+```
+
 ## Notes
 
  - **GPU Support:** For the moment theano and tensorflow are installed without GPU support in this docker
