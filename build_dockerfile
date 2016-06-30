@@ -1,0 +1,2 @@
+echo "WARNING: make sure docker is running with ' --storage-opt dm.basesize=50G ' or some value greater than 15GB.  This build will grow past the default 10GB size -- this can done by adding the flag to DOCKER_OPTS in /etc/default/docker or /etc/sysconfig/docker and restarting docker *before* starting the build"
+sudo docker build -t radioml/radioml .

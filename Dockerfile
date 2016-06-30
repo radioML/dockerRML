@@ -44,17 +44,19 @@ RUN cd /gr/ && pybombs recipes add gr-recipes git+https://github.com/gnuradio/gr
 RUN cd /gr/ && pybombs recipes add gr-etcetera git+https://github.com/gnuradio/gr-etcetera.git
 RUN cd /gr/ && pybombs install gnuradio gr-burst gr-pyqt gr-pcap gr-mapper gr-analysis 
 
-# check out sources for reference (build pyopenpnl + kerlym)
+# check out sources for reference
 RUN /bin/ln -s /gr/src/ /root/src
 RUN cd /root/src/ && git clone https://github.com/Theano/Theano.git
 RUN cd /root/src/ && git clone https://github.com/tensorflow/tensorflow.git
 RUN cd /root/src/ && git clone https://github.com/fchollet/keras.git
+
+# Build PyOpenPNL and Gym deps
+RUN apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig pypy-dev
 RUN cd /root/src/ && git clone https://github.com/PyOpenPNL/OpenPNL.git && cd OpenPNL && ./autogen.sh &&  ./configure CFLAGS='-g -O2 -fpermissive -w' CXXFLAGS='-g -O2 -fpermissive -w' && make -j4 && make install
 RUN cd /root/src/ && git clone https://github.com/PyOpenPNL/PyOpenPNL.git && cd PyOpenPNL && python setup.py build && python setup.py install
 RUN cd /root/src/ && git clone https://github.com/osh/kerlym.git && cd kerlym && python setup.py build && python setup.py install
 
 # set up OpenAI Gym
-RUN apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
 RUN cd /root/src/ && git clone https://github.com/openai/gym.git && cd gym && pip install -e .
 RUN pip install gym[atari] pachi_py
 RUN mkdir /root/src/notebooks/

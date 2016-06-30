@@ -14,6 +14,8 @@ A docker image provided by https://radioml.com/ which provides many of the primi
 
 ## Building the Container
 
+Please note: your docker image max size must be >10GB for this build, please see Notes section.
+
 ```
 git clone https://github.org/radioML/dockerRML.git rml
 cd rml && sudo docker build -t radioml/radioml . 
@@ -65,5 +67,8 @@ now open http://docker_ip:8888 in the host browser
 ## Notes
 
  - **GPU Support:** For the moment theano and tensorflow are installed without GPU support in this docker
- - **Image Size:** Current image size is ~10GB after build
+ - **Image Size:** Current image size is >10GB after build
+ - **Docker BaseSize:** default docker basesize is 10GB, you must increase this to 20GB or 50GB by adding ' --storage-opt dm.basesize=50G ' to DOCKER_OPTS in /etc/default/docker or /etc/sysconfig/docker and restarting the docker daeming (**This must be done before starting the build**)
+
+
 
