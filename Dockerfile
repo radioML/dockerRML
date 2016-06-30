@@ -36,7 +36,7 @@ RUN pip install --upgrade git+https://github.com/fchollet/keras.git
 RUN pip install --upgrade seaborn tqdm
 
 # set up gnuradio and related tools
-RUN apt-get install -y autotools-dev autoconf sudo wireshark
+RUN apt-get install -y autotools-dev autoconf sudo wireshark gdb
 RUN pip install --upgrade git+https://github.com/gnuradio/pybombs.git
 RUN mkdir /gr/
 RUN cd /gr/ && pybombs prefix init .
@@ -61,8 +61,9 @@ RUN cd /root/src/ && git clone https://github.com/openai/gym.git && cd gym && pi
 RUN pip install gym[atari] pachi_py
 RUN mkdir /root/src/notebooks/
 
-# copy in some helpful files
+# copy in some helpful files / set up env on login
 COPY .vimrc /root/
+RUN echo "source /gr/setup_env.sh" >> /root/.bashrc
 
 
 
