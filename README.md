@@ -91,9 +91,9 @@ cd /root/src/PyOpenPNL/examples
 
 ## Notes
 
- - **GPU Support:** For the moment theano and tensorflow are installed without GPU support in this docker
- - **Image Size:** Current image size is >10GB after build
- - **Build Time:** Building on an 8 core i7-5930K within an RHEL 7.2 KVM instance on a non-SSD raid takes just over 2 hours, YMMV
+ - **GPU Support:** To build with GPU support for use with nvidia-docker, use dockerRML/full-GPU/Dockerfile 
+ - **Image Size:** Current sizes are Full: 10.3GB, Full-GPU: 10.5GB, MinimalML: 4.0GB, MinimalSDR: 8.3GB
+ - **Build Time:** Building Full on an 8 core i7-5930K within an RHEL 7.2 KVM instance on a non-SSD raid takes just over 2 hours, YMMV
  - **Docker BaseSize:** default docker basesize is 10GB, you must increase this to 20GB or 50GB by adding ' --storage-opt dm.basesize=50G ' to DOCKER_OPTS in /etc/default/docker or /etc/sysconfig/docker and restarting the docker daeming (**This must be done before starting the build**)
 
 

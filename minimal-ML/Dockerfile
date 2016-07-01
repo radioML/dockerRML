@@ -46,7 +46,7 @@ RUN cd /root/src/ && git clone https://github.com/fchollet/keras.git
 
 # Build PyOpenPNL and Gym deps
 RUN pip install networkx
-RUN apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig pypy-dev
+RUN apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig pypy-dev automake autoconf libtool
 RUN cd /root/src/ && git clone https://github.com/PyOpenPNL/OpenPNL.git && cd OpenPNL && ./autogen.sh &&  ./configure CFLAGS='-g -O2 -fpermissive -w' CXXFLAGS='-g -O2 -fpermissive -w' && make -j4 && make install
 RUN cd /root/src/ && git clone https://github.com/PyOpenPNL/PyOpenPNL.git && cd PyOpenPNL && python setup.py build && python setup.py install
 RUN cd /root/src/ && git clone https://github.com/osh/kerlym.git && cd kerlym && python setup.py build && python setup.py install
