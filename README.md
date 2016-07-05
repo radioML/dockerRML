@@ -17,7 +17,7 @@ A docker image provided by https://radioml.com/ which provides many of the primi
 Please note: your docker image max size must be >10GB for this build, please see Notes section.
 
 ```
-git clone https://github.org/radioML/dockerRML.git rml
+git clone https://github.com/radioML/dockerRML.git rml
 cd rml && sudo docker build -t radioml/radioml . 
 ```
 
