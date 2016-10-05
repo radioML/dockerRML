@@ -65,6 +65,3 @@ RUN mkdir /root/src/notebooks/
 # copy in some helpful files / set up env on login
 COPY .vimrc /root/
 RUN echo "source /gr/setup_env.sh" >> /root/.bashrc
-
-
-
