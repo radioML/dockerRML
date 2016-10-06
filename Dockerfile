@@ -6,26 +6,26 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # update repos/ppas...
 RUN apt-get update 
-RUN apt-get install -y python-software-properties software-properties-common
+RUN apt-get install -y python-software-properties software-properties-common 
 RUN apt-add-repository -y ppa:x2go/stable
 RUN apt-get update 
 
 # install core packages
-RUN apt-get install -y python-pip git openssh-server vim emacs screen tmux locate
-RUN apt-get install -y python-matplotlib python-scipy python-numpy
-RUN apt-get install -y python-sklearn python-sklearn-doc python-skimage python-skimage-doc python-scikits-learn python-scikits.statsmodels
+RUN apt-get update &&  \
+    apt-get install -y python-pip git openssh-server vim emacs screen tmux locate \
+    	    	       python-matplotlib python-scipy python-numpy \
+                       python-sklearn python-sklearn-doc python-skimage \
+                       python-skimage-doc python-scikits-learn python-scikits.statsmodels \
+		       python-opencv gimp \
+		       firefox evince audacity meld \
+		       xfwm4 xfce4 x2goserver x2goserver-xsession \
+		       autotools-dev autoconf sudo wireshark gdb
+		       
 
 # Set up remove login info
 RUN mkdir /var/run/sshd
 RUN echo 'root:radioml' | chpasswd
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-
-# somewhat more graphical packages..
-RUN apt-get install -y python-opencv gimp 
-RUN apt-get install -y firefox evince audacity meld
-
-# set up remove visual login packages ...
-RUN apt-get install -y xfwm4 xfce4 x2goserver x2goserver-xsession
 
 # install python packages
 RUN pip install --upgrade pip
@@ -36,7 +36,6 @@ RUN pip install --upgrade git+https://github.com/fchollet/keras.git
 RUN pip install --upgrade seaborn tqdm
 
 # set up gnuradio and related tools
-RUN apt-get install -y autotools-dev autoconf sudo wireshark gdb
 RUN pip install --upgrade git+https://github.com/gnuradio/pybombs.git
 RUN mkdir /gr/
 RUN cd /gr/ && pybombs prefix init .
@@ -65,3 +64,11 @@ RUN mkdir /root/src/notebooks/
 # copy in some helpful files / set up env on login
 COPY .vimrc /root/
 RUN echo "source /gr/setup_env.sh" >> /root/.bashrc
+
+COPY imagefiles-supervisord /etc/supervisor/conf.d/supervisord.conf
+
+RUN mkdir -p /root/.jupyter
+COPY imagefiles-jupyter /root/.jupyter
+
+EXPOSE 22 8888
+CMD ["/usr/bin/supervisord"]
