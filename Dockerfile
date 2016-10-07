@@ -66,10 +66,19 @@ COPY .vimrc /root/
 RUN echo "source /gr/setup_env.sh" >> /root/.bashrc
 
 RUN apt-get install -y supervisor
-COPY imagefiles-supervisord /etc/supervisor/conf.d/supervisord.conf
+COPY imagefiles-supervisord /etc/supervisor/conf.d
 
 RUN mkdir -p /root/.jupyter
 COPY imagefiles-jupyter /root/.jupyter
 
+RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+
+ENV NOTVISIBLE "in users profile"
+RUN echo "export VISIBLE=now" >> /etc/profile
+
+WORKDIR /root
 EXPOSE 22 8888
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf", "-n"]
