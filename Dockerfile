@@ -65,10 +65,11 @@ RUN mkdir /root/src/notebooks/
 COPY .vimrc /root/
 RUN echo "source /gr/setup_env.sh" >> /root/.bashrc
 
+RUN apt-get install -y supervisor
 COPY imagefiles-supervisord /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir -p /root/.jupyter
 COPY imagefiles-jupyter /root/.jupyter
 
 EXPOSE 22 8888
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf", "-n"]
