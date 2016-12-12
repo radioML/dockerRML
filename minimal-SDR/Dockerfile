@@ -36,7 +36,7 @@ RUN mkdir /gr/
 RUN cd /gr/ && pybombs prefix init .
 RUN cd /gr/ && pybombs recipes add gr-recipes git+https://github.com/gnuradio/gr-recipes.git 
 RUN cd /gr/ && pybombs recipes add gr-etcetera git+https://github.com/gnuradio/gr-etcetera.git
-RUN cd /gr/ && pybombs install gnuradio gr-burst gr-pyqt gr-pcap gr-mapper gr-analysis 
+RUN cd /gr/ && pybombs install gnuradio gr-burst gr-pyqt gr-pcap gr-mapper gr-analysis gr-mediatools
 
 # check out sources for reference
 RUN /bin/ln -s /gr/src/ /root/src
