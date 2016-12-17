@@ -59,5 +59,9 @@ RUN mkdir /root/src/notebooks/
 # copy in some helpful files / set up env on login
 COPY .vimrc /root/
 
-
-
+# generate jupyter config
+RUN jupyter notebook --generate-config
+RUN echo "c.NotebookApp.token = u''" >> ~/.jupyter/jupyter_notebook_config.py
+RUN echo "c.NotebookApp.ip = '*'" >> ~/.jupyter/jupyter_notebook_config.py
+RUN echo "c.NotebookApp.open_browser = False" >> ~/.jupyter/jupyter_notebook_config.py
+RUN echo "c.NotebookApp.port = 8888" >> ~/.jupyter/jupyter_notebook_config.py
