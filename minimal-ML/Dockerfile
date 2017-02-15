@@ -34,6 +34,7 @@ RUN pip install --upgrade --no-deps git+git://github.com/Theano/Theano.git
 RUN pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.9.0-cp27-none-linux_x86_64.whl
 RUN pip install --upgrade git+https://github.com/fchollet/keras.git
 RUN pip install --upgrade seaborn tqdm
+RUN pip install --upgrade pandas
 
 # set up gnuradio and related tools
 RUN apt-get install -y sudo

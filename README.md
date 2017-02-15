@@ -6,11 +6,23 @@ A docker image provided by https://radioml.com/ which provides many of the primi
 ## Docker Image Contents
 
  - **Base:**   Ubuntu 16.04 Xenial Xerus
- - **Remote:** ssh-server, x2go server + xfce4, ipython notebook
+ - **Remote:** ssh-server, x2go server + xfce4, ipython/jupyter notebook
  - **Misc:**   screen, tmux, vim, emacs, git, meld
  - **DL:**     Theano, TensorFlow, Keras, OpenAI Gym, KeRLym
- - **ML:**     Scikit-learn, OpenCV, PyOpenPNL
+ - **ML:**     Scikit-learn, OpenCV, PyOpenPNL, Pandas
  - **SDR:**    GNU Radio + several useful out-of-tree gr-modules
+
+## Quickstart: Downloading and Running Pre-Built Docker-Hub Images
+
+The easiest way to use this image is to pull a pre-built version directly from docker hub
+
+```
+# Get the docker image from the whale cloud
+docker pull radioml/full
+
+# Run it (or use various running recipes below)
+docker run -i -t radioml/full /bin/bash
+```
 
 ## Building the Container
 
